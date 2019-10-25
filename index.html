@@ -13,11 +13,28 @@
 <body>
 <div id="map" style="height: 400px"></div>
 <script>
-    let map = L.map('map').setView([37.283,127.024],13);
+    let map = L.map('map').setView([37.381112, 126.662301],18);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '<a href="http://www.carnavi.com/">Carnavicom</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+    // custom ship icon
+    let shipIcon = L.icon({
+        iconUrl: 'res/image/ship.png',
+
+        iconSize: [70, 40],
+        // iconAnchor: [0, 0],
+        tooltipAnchor: [0, 15],
+    });
+
+    // marker
+    let marker = L.marker([37.381112, 126.662301], {icon: shipIcon}).addTo(map).on('click', (e) => {
+    // let marker = L.marker([37.381112, 126.662301]).addTo(map).on('click', (e) => {
+        alert(e.latlng);
+    });
+    marker.bindTooltip("demo ship").openTooltip()
+
 </script>
 <h1>Hello World!</h1>
 We are using node <script>document.write(process.versions.node)</script>,
